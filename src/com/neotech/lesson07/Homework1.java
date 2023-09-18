@@ -23,8 +23,6 @@ public class Homework1 extends BaseClass {
 
 		WebElement header = driver.findElement(By.xpath("//span[text()='Not a Friendly Topic']"));
 
-		System.out.println(header.getText());
-
 		if (header.isDisplayed()) {
 			System.out.println("Test passed");
 		} else {
