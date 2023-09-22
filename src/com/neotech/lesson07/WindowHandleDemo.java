@@ -21,7 +21,7 @@ public class WindowHandleDemo extends BaseClass {
 		// This will give us a unique ID for this window/tab
 		System.out.println("Handle -> " + driver.getWindowHandle());
 
-		driver.findElement(By.linkText("Help")).click();
+		driver.findElement(By.linkText("Guida")).click();
 
 		Thread.sleep(2000);
 

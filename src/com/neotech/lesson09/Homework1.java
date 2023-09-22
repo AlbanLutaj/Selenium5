@@ -36,23 +36,35 @@ public class Homework1 extends BaseClass {
 
 		Thread.sleep(2000);
 
-		List <WebElement> list = driver.findElements(By.xpath("//*[@id=\"ctl00_MainContent_orderGrid\"]"));
-		
-		for(int i = 0; i < list.size();i++) 
-		{
+		List<WebElement> list = driver.findElements(By.xpath("//table[@class='SampleTable']/tbody/tr"));
+
+		for (int i = 0; i < list.size(); i++) {
 			System.out.println(list.get(i).getText());
-			
-			if(list.contains("FamilyAlbum")) 
-			{
-				driver.findElement(By.xpath("//table[@class='SampleTable']/tbody/tr["+i+"]/td/input")).click();
-				Thread.sleep(2000);
+
+			if (list.get(i).getText().contains("FamilyAlbum")) {
+				int j = i + 1;
+				WebElement select = driver
+						.findElement(By.xpath("//table[@class='SampleTable']/tbody/tr[" + j + "]/td/input"));
+				select.click();
+				Thread.sleep(3000);
 			}
 		}
-		
+
+		driver.findElement(By.id("ctl00_MainContent_btnDelete")).click();
 
 		Thread.sleep(2000);
-
 		
+		System.out.println("-------------------------------------------------------------------------------------------------");
+
+		WebElement deselect = driver.findElement(By.xpath("//table[@class='SampleTable']/tbody/tr"));
+
+		if (!deselect.getText().contains("FamilyAlbum")) {
+			System.out.println("Test passed");
+		} else {
+			System.out.println("Test failed");
+		}
+
+		Thread.sleep(2000);
 
 		tearDown();
 	}

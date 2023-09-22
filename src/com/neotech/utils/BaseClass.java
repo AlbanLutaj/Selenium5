@@ -1,5 +1,7 @@
 package com.neotech.utils;
 
+import java.time.Duration;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -30,6 +32,7 @@ public class BaseClass {
 		}
 
 		Thread.sleep(2000);
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(Constants.IMPLICIT_WAIT_TIME));
 		driver.manage().window().maximize();
 		String website = ConfigsReader.getProperty("url");
 		driver.get(website);
